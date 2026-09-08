@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大今中医终端市场数据洞察报告 · 五类目标客户更新版</title>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root{
+  --ink:#22302B; --ink-soft:#51605A; --ink-faint:#7A8881;
+  --green:#1E4D3B; --green-deep:#14382B; --green-soft:#E4EDE7; --green-mist:#F1F6F2;
+  --ochre:#A85D2C; --ochre-soft:#F6E9DD; --red:#B3402E; --red-soft:#F7E3DE;
+  --paper:#F7F3EA; --card:#FFFFFF; --line:#E3DDCF; --line-soft:#EFEADF;
+  --gold:#C9A227; --gold-soft:#F7F0D8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;font-size:15px}
+h1,h2,h3,h4,.serif{font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif}
+.layout{display:flex;max-width:1280px;margin:0 auto;gap:0}
+/* ---------- sidebar ---------- */
+.sidebar{width:236px;flex:0 0 236px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--green-deep);color:#E8EFEA;padding:26px 18px 40px;z-index:20}
+.sidebar .brand{font-family:"Noto Serif SC",serif;font-size:19px;font-weight:700;color:#F5EFE2;line-height:1.4;margin-bottom:2px}
+.sidebar .brand-sub{font-size:11px;color:#9FB8AC;letter-spacing:.14em;margin-bottom:22px}
+.toc-list{list-style:none}
+.toc-list li{font-size:13px;line-height:1.35}
+.toc-list a{display:block;color:#C4D3CB;text-decoration:none;padding:6px 10px;border-radius:6px;border-left:2px solid transparent;transition:all .15s}
+.toc-list a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.toc-list a.active{color:#fff;background:rgba(255,255,255,.10);border-left-color:var(--gold)}
+.toc-list .l2{padding-left:24px;font-size:12px}
+.toc-list .l2 a{padding:4px 10px}
+.sidebar .foot{margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:11px;color:#8FA69A;line-height:1.7}
+/* ---------- toc mobile ---------- */
+.toc-mobile{display:none;position:sticky;top:0;z-index:30;background:var(--green-deep);padding:10px 14px}
+.toc-mobile select{width:100%;padding:9px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.25);background:#1E4D3B;color:#F0F5F1;font-size:14px;font-family:inherit}
+/* ---------- main ---------- */
+.main{flex:1;min-width:0;padding:0 52px 60px}
+/* ---------- cover ---------- */
+.cover{padding:56px 8px 20px}
+.cover .kicker{display:inline-block;font-size:12px;letter-spacing:.22em;color:var(--ochre);border:1px solid var(--ochre);border-radius:999px;padding:4px 14px;margin-bottom:22px;font-weight:500}
+.cover h1{font-size:42px;font-weight:900;line-height:1.28;color:var(--green-deep);margin-bottom:16px}
+.cover .subtitle{font-size:18px;color:var(--ink-soft);margin-bottom:26px;line-height:1.7}
+.cover .meta{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:12.5px;color:var(--ink-faint);border-top:1px solid var(--line);padding-top:18px;margin-bottom:34px}
+.cover .meta b{color:var(--ink-soft);font-weight:600}
+/* kpi */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:30px 0 8px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--green)}
+.kpi.ochre::before{background:var(--ochre)}
+.kpi.gold::before{background:var(--gold)}
+.kpi.red::before{background:var(--red)}
+.kpi .num{font-family:"Noto Serif SC",serif;font-size:26px;font-weight:900;color:var(--green-deep);line-height:1.2}
+.kpi .num em{font-style:normal;font-size:15px;font-weight:700}
+.kpi .lab{font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.55}
+/* ---------- section ---------- */
+section{padding:46px 8px 10px;border-top:1px solid var(--line)}
+.part-tag{font-family:"Noto Sans SC",sans-serif;font-size:12px;letter-spacing:.2em;color:var(--ochre);font-weight:700;margin-bottom:6px}
+h2{font-size:30px;font-weight:900;color:var(--green-deep);margin-bottom:10px}
+h3{font-size:20px;font-weight:700;color:var(--green);margin:30px 0 12px}
+h4{font-size:16px;font-weight:700;color:var(--ink);margin:22px 0 10px}
+.lead{font-size:15px;color:var(--ink-soft);max-width:860px;margin-bottom:20px}
+p{margin-bottom:12px;max-width:900px}
+b,strong{font-weight:700}
+/* ---------- tables ---------- */
+.table-wrap{overflow-x:auto;margin:14px 0 22px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+th{background:var(--green-mist);color:var(--green-deep);font-weight:700;text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#FBF9F2}
+td .dim{color:var(--ink-faint);font-size:12px}
+.tag{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:1px 7px;margin-right:4px}
+.tag.green{background:var(--green-soft);color:var(--green)}
+.tag.ochre{background:var(--ochre-soft);color:var(--ochre)}
+.tag.red{background:var(--red-soft);color:var(--red)}
+.tag.gold{background:var(--gold-soft);color:#8A6D12}
+/* ---------- notes ---------- */
+.note{border-radius:10px;padding:14px 16px 14px 44px;margin:16px 0;font-size:13.5px;position:relative;line-height:1.7}
+.note .ico{position:absolute;left:14px;top:14px;font-weight:900;font-size:13px}
+.note.key{background:var(--green-mist);border:1px solid #CBE0D3}
+.note.key .ico{color:var(--green)}
+.note.warn{background:var(--ochre-soft);border:1px solid #EDD6C2}
+.note.warn .ico{color:var(--ochre)}
+.note.danger{background:var(--red-soft);border:1px solid #EFCBC2}
+.note.danger .ico{color:var(--red)}
+.note.info{background:var(--gold-soft);border:1px solid #EADDA9}
+.note.info .ico{color:#8A6D12}
+/* ---------- chart ---------- */
+.chart-box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px 10px;margin:18px 0 26px}
+.chart-box h4{margin:0 0 2px;font-size:15.5px;color:var(--green-deep)}
+.chart-box .chart-src{font-size:11.5px;color:var(--ink-faint);margin-bottom:10px}
+.chart{width:100%;height:340px}
+.chart.tall{height:420px}
+.chart-fallback{display:none;font-size:12.5px;color:var(--ink-faint);padding:30px 10px;text-align:center}
+/* ---------- cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 16px 12px}
+.card h5{font-size:14.5px;font-weight:700;color:var(--green-deep);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.card h5 .pi{font-size:12px;font-weight:900;color:#fff;background:var(--green);border-radius:6px;padding:1px 8px}
+.card h5 .pi.ochre{background:var(--ochre)} .card h5 .pi.gold{background:var(--gold)} .card h5 .pi.red{background:var(--red)}
+.card ul{list-style:none;font-size:13px;line-height:1.65}
+.card li{padding-left:16px;position:relative;margin-bottom:6px;color:var(--ink-soft)}
+.card li::before{content:"·";position:absolute;left:4px;color:var(--ochre);font-weight:900}
+/* two-col */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+/* quote for hooks */
+.hook{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ochre);border-radius:8px;padding:12px 14px;margin:10px 0;font-size:13.5px;color:var(--ink)}
+.hook b{color:var(--green-deep)}
+.hook .t{display:inline-block;font-size:11px;font-weight:700;color:var(--ochre);border:1px solid var(--ochre);border-radius:4px;padding:0 6px;margin-right:8px}
+/* matrix */
+.matrix td{white-space:normal}
+/* refs */
+.ref-list{list-style:none;counter-reset:ref;margin:14px 0}
+.ref-list li{counter-increment:ref;font-size:12.5px;line-height:1.6;color:var(--ink-soft);padding:7px 0 7px 34px;position:relative;border-bottom:1px dashed var(--line-soft)}
+.ref-list li::before{content:"[" counter(ref) "]";position:absolute;left:0;top:7px;font-weight:700;color:var(--ochre);font-size:12px}
+.ref-list a{color:var(--ink-faint);word-break:break-all;text-decoration:none}
+.ref-list a:hover{color:var(--ochre);text-decoration:underline}
+/* footer */
+footer{margin-top:50px;padding:26px 8px 10px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-faint);line-height:1.9}
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .layout{display:block}
+  .sidebar{display:none}
+  .toc-mobile{display:block}
+  .main{padding:0 18px 40px}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .cards{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr}
+  .cover h1{font-size:30px}
+  h2{font-size:24px}
+}
+@media (max-width:560px){
+  .kpis{grid-template-columns:1fr 1fr;gap:10px}
+  .kpi .num{font-size:20px}
+  .cover{padding-top:30px}
+  .cover h1{font-size:26px}
+  .chart{height:300px}
+  body{font-size:14px}
+}
+</style>
+</head>
+<body>
+<div class="toc-mobile">
+<select id="tocSelect" onchange="if(this.value)location.hash=this.value">
+<option value="">目录导航</option>
+<option value="#cover">封面</option>
+<option value="#summary">执行摘要</option>
+<option value="#part1">一、统计口径定义</option>
+<option value="#part2">二、全国总量与连锁化率</option>
+<option value="#part3">三、五类详细量化数据</option>
+<option value="#part4">四、五类画像分析</option>
+<option value="#part5">五、对比与策略</option>
+<option value="#part6">六、数据缺口</option>
+<option value="#refs">附录：引用来源</option>
+</select>
+</div>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand">大今中医</div>
+  <div class="brand-sub">终端市场数据洞察</div>
+  <ul class="toc-list">
+    <li><a href="#cover">封面</a></li>
+    <li><a href="#summary">执行摘要</a></li>
+    <li><a href="#part1">一、统计口径定义</a></li>
+    <li><a href="#part2">二、全国总量与连锁化率</a></li>
+    <li class="l2"><a href="#s21">五类总量汇总</a></li>
+    <li class="l2"><a href="#s22">连锁化率核验</a></li>
+    <li><a href="#part3">三、五类详细量化数据</a></li>
+    <li class="l2"><a href="#s31">中医馆/诊所</a></li>
+    <li class="l2"><a href="#s32">连锁药店</a></li>
+    <li class="l2"><a href="#s33">体检机构</a></li>
+    <li class="l2"><a href="#s34">养生馆</a></li>
+    <li class="l2"><a href="#s35">健康驿站</a></li>
+    <li><a href="#part4">四、五类画像分析</a></li>
+    <li><a href="#part5">五、对比与策略</a></li>
+    <li class="l2"><a href="#s51">五类对比总表</a></li>
+    <li class="l2"><a href="#s52">品类优先级</a></li>
+    <li class="l2"><a href="#s53">区域×业态矩阵</a></li>
+    <li class="l2"><a href="#s54">获客话术</a></li>
+    <li class="l2"><a href="#s55">GEO内容策略</a></li>
+    <li><a href="#part6">六、数据缺口</a></li>
+    <li><a href="#refs">附录：引用来源</a></li>
+  </ul>
+  <div class="foot">GEO 售前数据洞察<br>编制日期 2026-09-08<br>仅供售前内部使用</div>
+</aside>
+<main class="main">
+
+<!-- ===== 封面 ===== -->
+<div class="cover" id="cover">
+  <span class="kicker">GEO 售前数据洞察 · 五类目标客户</span>
+  <h1>大今中医终端市场数据洞察报告<br>五类目标客户统计口径重构</h1>
+  <div class="subtitle">连锁药店 · 中医馆/诊所 · 大健康体检机构 · 养生馆 · 社区/景区健康驿站 —— 全国数量、连锁化率核验、区域分布与终端客户画像</div>
+  <div class="meta">
+    <span><b>编制日期</b> 2026年9月8日</span>
+    <span><b>数据截止</b> 2026年9月</span>
+    <span><b>数据基础</b> 2024-2026年公开数据优先</span>
+    <span><b>性质</b> 公开资料汇编 · 估算已标注</span>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="num">5<em> 类</em></div><div class="lab">重新定义的目标画像人群<br>连锁药店为 P0 优先品类</div></div>
+    <div class="kpi gold"><div class="num">56.2<em>%</em></div><div class="lab">连锁药店连锁化率<br>唯一真正「以连锁为主」的品类</div></div>
+    <div class="kpi ochre"><div class="num">10–20<em>%</em></div><div class="lab">中医馆连锁化率核验<br>「以连锁店为主」的判断不成立</div></div>
+    <div class="kpi red"><div class="num">36.91<em>万</em></div><div class="lab">全国连锁药店门店数<br>（官方精确，国家药监局）</div></div>
+  </div>
+</div>
+
+
+
+<div id="parts"></div>
+
+<footer>
+  <div>大今中医终端市场数据洞察报告 · 五类目标客户更新版 · 编制日期 2026-09-08</div>
+  <div>数据截止 2026 年 9 月 · 估算数据已标注 · 官方/行业/估算三层置信度 · 仅供售前内部使用</div>
+</footer>
+
+</main>
+</div>
+<script>
+(function(){
+  var files = ['summary.html','part1.html','part2.html','part3.html','part3b.html','part4.html','part5.html','part6.html','refs.html'];
+  var host = document.getElementById('parts');
+  var idx = 0;
+  function load(){
+    if(idx >= files.length){ afterAll(); return; }
+    var f = files[idx++];
+    fetch('parts/'+f).then(function(r){return r.text();}).then(function(t){
+      host.insertAdjacentHTML('beforeend', t);
+      load();
+    }).catch(function(){ load(); });
+  }
+  function loadJs(src){
+    var s = document.createElement('script');
+    s.src = src;
+    document.body.appendChild(s);
+  }
+  function afterAll(){
+    loadJs('parts/charts.js');
+    loadJs('parts/refs.js');
+  }
+  load();
+})();
+</script>
+</body>
+</html>
